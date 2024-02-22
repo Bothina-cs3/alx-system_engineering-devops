@@ -7,3 +7,4 @@ do
     echo "Best School"
     let COUNTER=COUNTER+1
 done
+
