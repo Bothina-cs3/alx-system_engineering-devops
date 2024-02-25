@@ -2,16 +2,14 @@
 #Write Bash (init) script 101-manage_my_process 
 #that manages manage_my_process. (both files need to be pushed to git)
 
-if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 {start|stop|restart}"
-    exit 1
-fi
-
-# Define the path to manage_my_process script
 SCRIPT_PATH="/path/to/manage_my_process"
 
 # Function to start the process
 start_process() {
+    if [ -f /var/run/my_process.pid ]; then
+        echo "manage_my_process is already running."
+        exit 1
+    fi
     $SCRIPT_PATH &
     echo $! > /var/run/my_process.pid
     echo "manage_my_process started"
@@ -19,7 +17,7 @@ start_process() {
 
 # Function to stop the process
 stop_process() {
-    if [[ -f /var/run/my_process.pid ]]; then
+    if [ -f /var/run/my_process.pid ]; then
         pid=$(cat /var/run/my_process.pid)
         kill $pid
         rm -f /var/run/my_process.pid
@@ -35,6 +33,12 @@ restart_process() {
     start_process
     echo "manage_my_process restarted"
 }
+
+# Check the number of arguments
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+fi
 
 # Determine the action based on the argument
 case "$1" in
