@@ -36,13 +36,13 @@ int main(void)
 		}
 		else if (child_pid > 0)
 		{
-			printf("Zombie process created, PID: %d\n", child_pid);
+			printf("Zombie process created, PID: %d\n", (int) child_pid);
 			sleep(1);
 		}
 		else
-		}
+		{
 			perror("fork");
-			return (1);
+		return (1);
 		}
 	}
 
