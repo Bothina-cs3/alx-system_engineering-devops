@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # script that transfers a file from our client to a server
 
-if [ $# -lt 4 ]
+if [ $# -lt 4 ];
 than
 	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-	exit 1
+	exit 1;
 fi
 
 path_to_file=$1
@@ -18,7 +18,7 @@ scp -o "StrictHostKeyChecking=no" -i "$path_to_ssh_key" "$path_to_file" "$userna
 
 
 # checking if the transfers was successful
-if [ $? -eq 0 ]
+if [ $? -eq 0 ];
 than
 	echo "FILE WAS TRANSFERED SUCCESSFULLY"
 else
