@@ -4,7 +4,6 @@
 
 apt-get update
 apt-get install -y nginx
-
 service nginx stop
 
 sed -i 's/^ *listen *.*$/listen 80;/g' /etc/nginx/sites-available/default
