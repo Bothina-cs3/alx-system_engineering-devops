@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Changes port in Nginx
+# Open the 80 port
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo service nginx stop
+pkill -1 nginx
 

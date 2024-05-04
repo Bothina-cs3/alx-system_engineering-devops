@@ -9,3 +9,4 @@ service nginx stop
 sed -i 's/^ *listen *.*$/listen 80;/g' /etc/nginx/sites-available/default
 
 service nginx start
+
