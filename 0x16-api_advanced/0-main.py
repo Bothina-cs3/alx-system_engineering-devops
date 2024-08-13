@@ -1,12 +1,25 @@
 #!/usr/bin/python3
-"""
-0-main
-"""
-import sys
+"""Module for querying the Reddit API to get the number of subscribers."""
 
-if __name__ == '__main__':
-    number_of_subscribers = __import__('0-subs').number_of_subscribers
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
+import requests
+
+
+def number_of_subscribers(subreddit):
+    """Queries the Reddit API and returns the number of subscribers
+    for a given subreddit.
+
+    Args:
+        subreddit (str): The subreddit to query.
+
+    Returns:
+        int: The number of subscribers, or 0 if the subreddit is invalid.
+    """
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {"User-Agent": "custom User-Agent"}
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json().get('data', {})
+        return data.get('subscribers', 0)
     else:
-        print("{:d}".format(number_of_subscribers(sys.argv[1])))
+        return 0
