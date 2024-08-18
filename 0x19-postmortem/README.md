@@ -1,4 +1,6 @@
-# Postmortem: 
+# Postmortem:
+
+![Server Outage Diagram](https://github.com/Bothina-cs3/alx-system_engineering-devops/blob/master/0x19-postmortem/image.png) 
 
 ## Issue Summary
 - **Outage Duration:**  
