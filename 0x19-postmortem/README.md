@@ -1,4 +1,4 @@
-# Postmortem: August 12, 2024 Outage
+# Postmortem: 
 
 ## Issue Summary
 - **Outage Duration:**  
